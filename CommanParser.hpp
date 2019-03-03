@@ -8,22 +8,37 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <list>
 #include <algorithm>
 #include <sstream>
 #include <vector>
 #include <regex>
+
+enum letterType{
+    iUnknown = 0,
+    iTrue,
+    iFalse,
+    iError
+};
+
 
 class CommandParser {
 public:
     explicit CommandParser(std::string file);
     ~CommandParser();
 
-private:
+public:
     bool ParseLine(std::string & line);
+    bool ParseQuery(std::string & line);
     bool ParseFact(std::string & line);
-    bool ParseAnswer(std::string & line);
     bool Conditions(std::string & line);
+    std::string pattern;
     std::vector<std::string> AllLines;
+    std::vector<std::string> mCommands;
+    std::map<char, letterType> mLetters;
+    std::multimap<std::string, std::string> mConditions;
+    std::list<char> mFacts;
+    std::list<char> mQuery;
 };
 
 

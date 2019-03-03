@@ -1,7 +1,8 @@
 
 #include "CommanParser.hpp"
+#include "ExpertSystem.h"
 
-bool ReadFile(std::string filepath, std::string &content){
+bool ReadFile(const std::string &filepath, std::string &content){
     std::ifstream stream(filepath);
     std::stringstream buffer;
     if (!stream.good())
@@ -22,7 +23,9 @@ int main(int ac, char **av) {
         std::cout << "Failed to open file!";
         return 0;
     }
-    std::cout << file ; //debug
-    CommandParser parser(file);
+   // std::cout << file  << std::endl; //debug
+    ExpertSystem system(file);
+    system.solve();
+    //ExpertSystem solver(parser);
     return 0;
 }
