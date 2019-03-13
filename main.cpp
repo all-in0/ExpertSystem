@@ -26,6 +26,8 @@ int main(int ac, char **av) {
    // std::cout << file  << std::endl; //debug
     ExpertSystem system(file);
     system.solve();
+    int a;
+    std::cin >> a ;
     //ExpertSystem solver(parser);
     return 0;
 }
