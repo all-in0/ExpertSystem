@@ -32,9 +32,13 @@ public:
     bool ParseQuery(std::string & line);
     bool ParseFact(std::string & line);
     bool Conditions(std::string & line);
+    std::string simplifyCondition(std::string  line);
+
     std::string pattern;
     std::vector<std::string> AllLines;
     std::vector<std::string> mCommands;
+    std::vector<std::pair<std::string, std::string>> mTmpCnd;
+    char mCondReplace;
     std::map<char, letterType> mLetters;
     std::multimap<std::string, std::string> mConditions;
     std::list<char> mFacts;
